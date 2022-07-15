@@ -34,11 +34,11 @@ one_shot = true
 
 [node name="EnemyTimer" type="Timer" parent="."]
 
-[node name="Message" type="Label" parent="."]
+[node name="ResultMessage" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
 
-[node name="StartFight" type="Label" parent="."]
+[node name="StartMessage" type="Label" parent="."]
 margin_left = 48.0
 margin_top = 32.0
 margin_right = 112.0

@@ -5,6 +5,8 @@ public class Main : Node
 {
     private Timer countdown;
     private Timer enemyTimer;
+    private Label startMessage;
+    private Label resultMessage;
 
     private Player player;
     private Enemy enemy;
@@ -15,6 +17,11 @@ public class Main : Node
         GD.Print("START");
         GD.Randomize();        
 
+        startMessage = GetNode<Label>("StartMessage");
+        resultMessage = GetNode<Label>("ResultMessage");
+
+        startMessage.Hide();
+
         player = GetNode<Player>("Player");
         enemy = GetNode<Enemy>("Enemy");
 
@@ -23,7 +30,7 @@ public class Main : Node
 
         totalTime = (float)GD.RandRange(5.0, 10.0);
         countdown.WaitTime = totalTime;
-        enemyTimer.WaitTime = totalTime + 1.0f;
+        enemyTimer.WaitTime = totalTime + 3.0f;
 
         countdown.Start();
         enemyTimer.Start();
@@ -32,6 +39,7 @@ public class Main : Node
     public void onCountdownTimeout()
     {
         GD.Print("DONE");
+        startMessage.Show();
         player.isTimerRunning = false;
     }
 

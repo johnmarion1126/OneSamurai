@@ -8,9 +8,10 @@
 script = ExtResource( 1 )
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 125, 76 )
+position = Vector2( 128, 72 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 32, 72 )
 
 [node name="Countdown" type="Timer" parent="."]
 one_shot = true

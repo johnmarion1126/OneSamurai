@@ -8,6 +8,7 @@ public class Main : Node
 
     private Player player;
     private Enemy enemy;
+    private float totalTime;
 
     public override void _Ready()
     {
@@ -20,8 +21,9 @@ public class Main : Node
         countdown = GetNode<Timer>("Countdown");
         enemyTimer = GetNode<Timer>("EnemyTimer");
 
-        countdown.WaitTime = 10.0f;
-        enemyTimer.WaitTime = 15.0f;
+        totalTime = (float)GD.RandRange(5.0, 10.0);
+        countdown.WaitTime = totalTime;
+        enemyTimer.WaitTime = totalTime + 1.0f;
 
         countdown.Start();
         enemyTimer.Start();

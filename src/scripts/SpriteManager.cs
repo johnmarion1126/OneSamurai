@@ -3,16 +3,16 @@ using System;
 
 public class SpriteManager : AnimatedSprite
 {
-    public void setStandingSprite()
+    private AnimatedSprite animatedSprite;
+    public SpriteManager()
     {
-        this.Animation = "Standing";
     }
-    public void setAttackingSprite()
+    public SpriteManager(AnimatedSprite animatedSprite)
     {
-        this.Animation = "Attacking";
+        this.animatedSprite = animatedSprite;
     }
-    public void setFaintingSprite()
+    public void setSpriteState(string state)
     {
-        this.Animation = "Fainting";
+        animatedSprite.Animation = state;
     }
 }

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://src/scripts/SpriteManager.cs" type="Script" id=1]
 [ext_resource path="res://assets/sprites/Attacking.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/Standing.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/Fainting.png" type="Texture" id=4]
+[ext_resource path="res://src/scenes/PlayerController.cs" type="Script" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -28,4 +28,4 @@ position = Vector2( 35, 74 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "Standing"
-script = ExtResource( 1 )
+script = ExtResource( 5 )

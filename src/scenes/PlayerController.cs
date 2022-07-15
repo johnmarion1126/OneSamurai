@@ -8,7 +8,14 @@ public class PlayerController : AnimatedSprite
     public override void _Ready()
     {
         animtedSprite = new SpriteManager(this);
-        animtedSprite.setSpriteState("Fainting");
     }
+
+  public override void _Process(float delta)
+  {
+    if (Input.IsActionPressed("attack"))
+    {
+        animtedSprite.setSpriteState("Attacking");
+    }
+  }
 
 }

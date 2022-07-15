@@ -1,10 +1,11 @@
 using Godot;
 using System;
 
-public class PlayerController : AnimatedSprite
+public class Player : AnimatedSprite
 {
-    [Export]
     private SpriteManager animtedSprite;
+    public bool isTimerRunning = true;
+
     public override void _Ready()
     {
         animtedSprite = new SpriteManager(this);
@@ -15,6 +16,7 @@ public class PlayerController : AnimatedSprite
     if (Input.IsActionPressed("attack"))
     {
         animtedSprite.setSpriteState("Attacking");
+        GD.Print(isTimerRunning);
     }
   }
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/sprites/Attacking.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/Standing.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/Fainting.png" type="Texture" id=3]
+[ext_resource path="res://src/scripts/Enemy.cs" type="Script" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -28,3 +29,4 @@ scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "Standing"
 flip_h = true
+script = ExtResource( 4 )

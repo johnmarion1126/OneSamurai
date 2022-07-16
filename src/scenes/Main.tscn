@@ -39,10 +39,10 @@ margin_right = 40.0
 margin_bottom = 14.0
 
 [node name="StartMessage" type="Label" parent="."]
-margin_left = 48.0
-margin_top = 32.0
-margin_right = 112.0
-margin_bottom = 72.0
+margin_left = 50.0
+margin_top = 16.0
+margin_right = 114.0
+margin_bottom = 64.0
 custom_colors/font_color = Color( 0.2, 0.2, 0.2, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )

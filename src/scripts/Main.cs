@@ -47,5 +47,10 @@ public class Main : Node
   {
     enemy.attack();
   }
-  
+
+  public void onPlayerAttack()
+  {
+    GD.Print("Player attacks!");
+  }
+
 }

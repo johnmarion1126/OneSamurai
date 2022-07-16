@@ -50,5 +50,6 @@ text = "!!"
 align = 1
 valign = 1
 
+[connection signal="Attack" from="Player" to="." method="onPlayerAttack"]
 [connection signal="timeout" from="Countdown" to="." method="onCountdownTimeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="onEnemyTimerTimeout"]

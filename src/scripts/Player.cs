@@ -4,7 +4,7 @@ using System;
 public class Player : AnimatedSprite
 {
   [Signal]
-  public delegate void PlayerAttack();
+  public delegate void Attack();
 
   private SpriteManager animtedSprite;
   public bool isTimerRunning = true;
@@ -19,7 +19,7 @@ public class Player : AnimatedSprite
     if (Input.IsActionPressed("attack"))
     {
       animtedSprite.setSpriteState("Attacking");
-      EmitSignal(nameof(PlayerAttack));
+      EmitSignal(nameof(Attack));
     }
   }
 

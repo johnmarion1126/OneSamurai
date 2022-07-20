@@ -40,7 +40,6 @@ public class Main : Node
   {
     if (isGameFinish && Input.IsActionJustPressed("reset"))
     {
-      GD.Print("reset");
       reset();
     }
   }
@@ -48,7 +47,7 @@ public class Main : Node
   public void setTimers()
   {
     float totalTime = (float)GD.RandRange(4.0, 8.0);
-    float enemyReactTime = (float)GD.RandRange(1.0, 2.0);
+    float enemyReactTime = (float)GD.RandRange(0.5, 2.0);
 
     countdown.WaitTime = totalTime;
     enemyTimer.WaitTime = totalTime + enemyReactTime;

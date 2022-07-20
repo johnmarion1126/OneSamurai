@@ -12,12 +12,11 @@ public class Main : Node
   private Player player;
   private Enemy enemy;
 
-  private float totalTime;
   private bool isStartTimerRunning = true;
+  private bool isGameFinish = false;
 
   public override void _Ready()
   {
-    GD.Print("START");
     GD.Randomize();        
 
     startMessage = GetNode<Label>("StartMessage");
@@ -34,9 +33,25 @@ public class Main : Node
     countdown = GetNode<Timer>("Countdown");
     enemyTimer = GetNode<Timer>("EnemyTimer");
 
-    totalTime = (float)GD.RandRange(5.0, 10.0);
+    setTimers();
+  }
+
+  public override void _Process(float delta)
+  {
+    if (isGameFinish && Input.IsActionJustPressed("reset"))
+    {
+      GD.Print("reset");
+      reset();
+    }
+  }
+
+  public void setTimers()
+  {
+    float totalTime = (float)GD.RandRange(4.0, 8.0);
+    float enemyReactTime = (float)GD.RandRange(1.0, 2.0);
+
     countdown.WaitTime = totalTime;
-    enemyTimer.WaitTime = totalTime + 3.0f;
+    enemyTimer.WaitTime = totalTime + enemyReactTime;
 
     countdown.Start();
     enemyTimer.Start();
@@ -44,7 +59,13 @@ public class Main : Node
 
   public void reset()
   {
+    resultMessage.Hide();
+    resetMessage.Hide();
 
+    player.resetPosition();
+    enemy.resetPosition();
+
+    setTimers();
   }
 
   public void onCountdownTimeout()
@@ -61,10 +82,7 @@ public class Main : Node
     resultMessage.Show();
 
     enemy.faint();
-    enemy.FlipH = false;
-
     player.attack();
-    player.FlipH = true;
   }
 
   public void setPlayerWin()
@@ -75,19 +93,18 @@ public class Main : Node
     resultMessage.Show();
 
     enemy.attack();
-    enemy.FlipH = false;
-
     player.faint();
-    player.FlipH = true;
   }
 
   public void onEnemyTimerTimeout()
   {
+    isGameFinish = true;
     setEnemyWin();
   }
 
   public void onPlayerAttack()
   {
+    isGameFinish = true;
     countdown.Stop();
     enemyTimer.Stop();
 

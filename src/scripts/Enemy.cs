@@ -10,14 +10,22 @@ public class Enemy : AnimatedSprite
     animtedSprite = new SpriteManager(this);
   }
 
+  public void resetPosition()
+  {
+    animtedSprite.setSpriteState("Standing");
+    this.FlipH = true;
+  }
+
   public void attack()
   {
     animtedSprite.setSpriteState("Attacking");
+    this.FlipH = false;
   }
 
   public void faint()
   {
     animtedSprite.setSpriteState("Fainting");
+    this.FlipH = false;
   }
   
 }

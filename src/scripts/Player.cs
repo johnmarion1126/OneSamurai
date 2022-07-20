@@ -22,14 +22,22 @@ public class Player : AnimatedSprite
     }
   }
 
+  public void resetPosition()
+  {
+    animtedSprite.setSpriteState("Standing");
+    this.FlipH = false;
+  }
+  
   public void attack()
   {
     animtedSprite.setSpriteState("Attacking");
+    this.FlipH = true;
   }
-  
+
   public void faint()
   {
     animtedSprite.setSpriteState("Fainting");
+    this.FlipH = true;
   }
 
 }

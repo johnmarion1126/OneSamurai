@@ -11,6 +11,7 @@ public class Main : Node
   private Enemy enemy;
 
   private float totalTime;
+  private bool isStartTimerRunning = true;
 
   public override void _Ready()
   {
@@ -39,8 +40,8 @@ public class Main : Node
   public void onCountdownTimeout()
   {
     GD.Print("DONE");
+    isStartTimerRunning = false;
     startMessage.Show();
-    player.isTimerRunning = false;
   }
 
   public void onEnemyTimerTimeout()
@@ -50,7 +51,14 @@ public class Main : Node
 
   public void onPlayerAttack()
   {
-    GD.Print("Player attacks!");
+    if (isStartTimerRunning) 
+    {
+      GD.Print("Player loses");
+    }
+    else 
+    {
+      GD.Print("Player wins");
+    }
   }
 
 }

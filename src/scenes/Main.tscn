@@ -44,6 +44,7 @@ one_shot = true
 [node name="EnemyTimer" type="Timer" parent="."]
 
 [node name="ResultMessage" type="Label" parent="."]
+visible = false
 margin_left = 9.0
 margin_top = 22.0
 margin_right = 156.0
@@ -56,6 +57,7 @@ align = 1
 valign = 1
 
 [node name="ResetMessage" type="Label" parent="."]
+visible = false
 margin_left = 8.0
 margin_top = 34.0
 margin_right = 155.0

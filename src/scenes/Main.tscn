@@ -11,7 +11,7 @@ outline_color = Color( 0.8, 0.8, 0.8, 1 )
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 6
+size = 7
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=1]
@@ -57,9 +57,9 @@ valign = 1
 
 [node name="ResetMessage" type="Label" parent="."]
 margin_left = 8.0
-margin_top = 33.0
+margin_top = 34.0
 margin_right = 155.0
-margin_bottom = 51.0
+margin_bottom = 52.0
 rect_pivot_offset = Vector2( -57, 16 )
 custom_colors/font_color = Color( 0.4, 0.4, 0.4, 1 )
 custom_fonts/font = SubResource( 3 )

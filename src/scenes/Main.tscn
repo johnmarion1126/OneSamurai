@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/scripts/Main.cs" type="Script" id=1]
 [ext_resource path="res://src/scenes/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,10 @@
 [sub_resource type="DynamicFont" id=2]
 size = 10
 outline_color = Color( 0.8, 0.8, 0.8, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 6
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=1]
@@ -41,12 +45,25 @@ one_shot = true
 
 [node name="ResultMessage" type="Label" parent="."]
 margin_left = 9.0
-margin_top = 32.0
+margin_top = 22.0
 margin_right = 156.0
-margin_bottom = 50.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( -57, 16 )
 custom_colors/font_color = Color( 0.2, 0.2, 0.2, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Player Wins"
+align = 1
+valign = 1
+
+[node name="ResetMessage" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 33.0
+margin_right = 155.0
+margin_bottom = 51.0
+rect_pivot_offset = Vector2( -57, 16 )
+custom_colors/font_color = Color( 0.4, 0.4, 0.4, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Press R To REST"
 align = 1
 valign = 1
 

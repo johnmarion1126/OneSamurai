@@ -7,6 +7,8 @@ public class Main : Node
   private Timer enemyTimer;
   private Label startMessage;
   private Label resultMessage;
+  private Label resetMessage;
+
   private Player player;
   private Enemy enemy;
 
@@ -20,9 +22,11 @@ public class Main : Node
 
     startMessage = GetNode<Label>("StartMessage");
     resultMessage = GetNode<Label>("ResultMessage");
+    resetMessage = GetNode<Label>("ResetMessage");
 
     startMessage.Hide();
     resultMessage.Hide();
+    resetMessage.Hide();
 
     player = GetNode<Player>("Player");
     enemy = GetNode<Enemy>("Enemy");
@@ -38,15 +42,20 @@ public class Main : Node
     enemyTimer.Start();
   }
 
+  public void reset()
+  {
+
+  }
+
   public void onCountdownTimeout()
   {
-    GD.Print("DONE");
     isStartTimerRunning = false;
     startMessage.Show();
   }
 
   public void setEnemyWin()
   {
+    resetMessage.Show();
     startMessage.Hide();
     resultMessage.Text = "Enemy Wins";
     resultMessage.Show();
@@ -60,6 +69,7 @@ public class Main : Node
 
   public void setPlayerWin()
   {
+    resetMessage.Show();
     startMessage.Hide();
     resultMessage.Text = "Player Wins";
     resultMessage.Show();
@@ -80,10 +90,9 @@ public class Main : Node
   {
     countdown.Stop();
     enemyTimer.Stop();
-    
+
     if (isStartTimerRunning) 
     {
-      GD.Print("Player loses");
       setEnemyWin();
     }
     else 

@@ -47,6 +47,7 @@ public class Main : Node
   public void onEnemyTimerTimeout()
   {
     enemy.attack();
+    GD.Print("Player loses");
   }
 
   public void onPlayerAttack()

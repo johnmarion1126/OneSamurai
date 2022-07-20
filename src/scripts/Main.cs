@@ -22,6 +22,7 @@ public class Main : Node
     resultMessage = GetNode<Label>("ResultMessage");
 
     startMessage.Hide();
+    resultMessage.Hide();
 
     player = GetNode<Player>("Player");
     enemy = GetNode<Enemy>("Enemy");
@@ -46,6 +47,10 @@ public class Main : Node
 
   public void setEnemyWin()
   {
+    startMessage.Hide();
+    resultMessage.Text = "Enemy Wins";
+    resultMessage.Show();
+
     enemy.faint();
     enemy.FlipH = false;
 
@@ -55,6 +60,10 @@ public class Main : Node
 
   public void setPlayerWin()
   {
+    startMessage.Hide();
+    resultMessage.Text = "Player Wins";
+    resultMessage.Show();
+
     enemy.attack();
     enemy.FlipH = false;
 
@@ -69,6 +78,9 @@ public class Main : Node
 
   public void onPlayerAttack()
   {
+    countdown.Stop();
+    enemyTimer.Stop();
+    
     if (isStartTimerRunning) 
     {
       GD.Print("Player loses");

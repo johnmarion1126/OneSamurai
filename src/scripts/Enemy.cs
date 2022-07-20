@@ -13,7 +13,11 @@ public class Enemy : AnimatedSprite
   public void attack()
   {
     animtedSprite.setSpriteState("Attacking");
-    GD.Print("Enemy attacks");
+  }
+
+  public void faint()
+  {
+    animtedSprite.setSpriteState("Fainting");
   }
   
 }

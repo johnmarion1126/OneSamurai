@@ -22,4 +22,14 @@ public class Player : AnimatedSprite
     }
   }
 
+  public void attack()
+  {
+    animtedSprite.setSpriteState("Attacking");
+  }
+  
+  public void faint()
+  {
+    animtedSprite.setSpriteState("Fainting");
+  }
+
 }

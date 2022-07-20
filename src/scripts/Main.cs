@@ -44,10 +44,27 @@ public class Main : Node
     startMessage.Show();
   }
 
-  public void onEnemyTimerTimeout()
+  public void setEnemyWin()
+  {
+    enemy.faint();
+    enemy.FlipH = false;
+
+    player.attack();
+    player.FlipH = true;
+  }
+
+  public void setPlayerWin()
   {
     enemy.attack();
-    GD.Print("Player loses");
+    enemy.FlipH = false;
+
+    player.faint();
+    player.FlipH = true;
+  }
+
+  public void onEnemyTimerTimeout()
+  {
+    setEnemyWin();
   }
 
   public void onPlayerAttack()
@@ -55,10 +72,11 @@ public class Main : Node
     if (isStartTimerRunning) 
     {
       GD.Print("Player loses");
+      setEnemyWin();
     }
     else 
     {
-      GD.Print("Player wins");
+      setPlayerWin();
     }
   }
 

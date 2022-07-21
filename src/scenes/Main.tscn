@@ -58,11 +58,12 @@ margin_bottom = 52.0
 rect_pivot_offset = Vector2( -57, 16 )
 custom_colors/font_color = Color( 0.4, 0.4, 0.4, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "Press R To REST"
+text = "Press R To RESET"
 align = 1
 valign = 1
 
 [node name="StartMessage" type="Label" parent="."]
+visible = false
 margin_left = 50.0
 margin_top = 16.0
 margin_right = 114.0

@@ -9,8 +9,8 @@ public class Main : Node
   private Label resultMessage;
   private Label resetMessage;
 
-  private Player player;
-  private Enemy enemy;
+  private Samurai samurai1;
+  private Samurai samurai2;
 
   private bool isStartTimerRunning = true;
   private bool isGameFinish = false;
@@ -27,8 +27,8 @@ public class Main : Node
     resultMessage.Hide();
     resetMessage.Hide();
 
-    player = GetNode<Player>("Player");
-    enemy = GetNode<Enemy>("Enemy");
+    samurai1 = GetNode<Samurai>("Samurai1");
+    samurai2 = GetNode<Samurai>("Samurai2");
 
     countdown = GetNode<Timer>("Countdown");
     enemyTimer = GetNode<Timer>("EnemyTimer");
@@ -42,6 +42,11 @@ public class Main : Node
     {
       reset();
     }
+
+    if (Input.IsActionJustPressed("attack"))
+    {
+      playerAttack();
+    }
   }
 
   public void setTimers()
@@ -54,6 +59,7 @@ public class Main : Node
 
     countdown.Start();
     enemyTimer.Start();
+    isStartTimerRunning = true;
   }
 
   public void reset()
@@ -61,10 +67,11 @@ public class Main : Node
     resultMessage.Hide();
     resetMessage.Hide();
 
-    player.resetPosition();
-    enemy.resetPosition();
+    samurai1.changeSprite("Standing", false);
+    samurai2.changeSprite("Standing", true);
 
     setTimers();
+    isGameFinish = false;
   }
 
   public void onCountdownTimeout()
@@ -80,8 +87,8 @@ public class Main : Node
     resultMessage.Text = "Enemy Wins";
     resultMessage.Show();
 
-    enemy.faint();
-    player.attack();
+    samurai1.changeSprite("Attacking", true);
+    samurai2.changeSprite("Fainting", false);
   }
 
   public void setPlayerWin()
@@ -91,8 +98,8 @@ public class Main : Node
     resultMessage.Text = "Player Wins";
     resultMessage.Show();
 
-    enemy.attack();
-    player.faint();
+    samurai1.changeSprite("Fainting", true);
+    samurai2.changeSprite("Attacking", false);
   }
 
   public void onEnemyTimerTimeout()
@@ -101,7 +108,7 @@ public class Main : Node
     setEnemyWin();
   }
 
-  public void onPlayerAttack()
+  public void playerAttack()
   {
     if (isGameFinish) return;
     isGameFinish = true;

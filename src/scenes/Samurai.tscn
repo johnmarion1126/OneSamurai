@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/sprites/Attacking.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/Standing.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/Fainting.png" type="Texture" id=3]
-[ext_resource path="res://src/scripts/Enemy.cs" type="Script" id=4]
+[ext_resource path="res://src/scripts/Samurai.cs" type="Script" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -12,21 +12,20 @@ animations = [ {
 "name": "Fainting",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "Attacking",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "Standing",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Attacking",
+"speed": 5.0
 } ]
 
-[node name="Enemy" type="AnimatedSprite"]
-position = Vector2( 124, 76 )
+[node name="Samurai" type="AnimatedSprite"]
+position = Vector2( 64, 63 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "Standing"
-flip_h = true
 script = ExtResource( 4 )

@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/scripts/Main.cs" type="Script" id=1]
-[ext_resource path="res://src/scenes/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/scenes/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/scenes/Samurai.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Early GameBoy.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=2]
@@ -31,12 +30,6 @@ color = Color( 0.2, 0.2, 0.2, 1 )
 margin_top = -96.0
 margin_right = 160.0
 color = Color( 0.7, 0.7, 0.7, 1 )
-
-[node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 128, 72 )
-
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 32, 72 )
 
 [node name="Countdown" type="Timer" parent="."]
 one_shot = true
@@ -82,6 +75,12 @@ text = "!!"
 align = 1
 valign = 1
 
-[connection signal="Attack" from="Player" to="." method="onPlayerAttack"]
+[node name="Samurai1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 32, 72 )
+
+[node name="Samurai2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 128, 72 )
+flip_h = true
+
 [connection signal="timeout" from="Countdown" to="." method="onCountdownTimeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="onEnemyTimerTimeout"]

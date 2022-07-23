@@ -43,6 +43,11 @@ public class Main : Node
       reset();
     }
 
+    if (isGameFinish && Input.IsActionJustPressed("quit"))
+    {
+      GetTree().ChangeScene("res://src/scenes/Title.tscn");
+    }
+
     if (Input.IsActionJustPressed("attack"))
     {
       playerAttack();

@@ -8,12 +8,14 @@ public class Main : Node
   private Label startMessage;
   private Label resultMessage;
   private Label resetMessage;
+  private Node2D titleNode;
+  private AnimationPlayer animPlayer;
 
   private Samurai samurai1;
   private Samurai samurai2;
 
   private bool isStartTimerRunning = true;
-  private bool isGameFinish = false;
+  private bool isGameRunning = false;
 
   public override void _Ready()
   {
@@ -22,6 +24,8 @@ public class Main : Node
     startMessage = GetNode<Label>("StartMessage");
     resultMessage = GetNode<Label>("ResultMessage");
     resetMessage = GetNode<Label>("ResetMessage");
+    titleNode = GetNode<Node2D>("TitleNode");
+    animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
     startMessage.Hide();
     resultMessage.Hide();
@@ -32,23 +36,23 @@ public class Main : Node
 
     countdown = GetNode<Timer>("Countdown");
     enemyTimer = GetNode<Timer>("EnemyTimer");
-
-    setTimers();
+    animPlayer.Play("FadeToNormal");
   }
 
   public override void _Process(float delta)
   {
-    if (isGameFinish && Input.IsActionJustPressed("reset"))
+    if (!isGameRunning && Input.IsActionJustPressed("reset"))
     {
       reset();
     }
 
-    if (isGameFinish && Input.IsActionJustPressed("quit"))
+    if (!isGameRunning && Input.IsActionJustPressed("attack"))
     {
-      GetTree().ChangeScene("res://src/scenes/Title.tscn");
+      titleNode.Hide();
+      setTimers();
     }
 
-    if (Input.IsActionJustPressed("attack"))
+    if (isGameRunning && Input.IsActionJustPressed("attack"))
     {
       playerAttack();
     }
@@ -76,7 +80,7 @@ public class Main : Node
     samurai2.changeSprite("Standing", true);
 
     setTimers();
-    isGameFinish = false;
+    isGameRunning = true;
   }
 
   public void onCountdownTimeout()
@@ -109,14 +113,14 @@ public class Main : Node
 
   public void onEnemyTimerTimeout()
   {
-    isGameFinish = true;
+    isGameRunning = false;
     setEnemyWin();
   }
 
   public void playerAttack()
   {
-    if (isGameFinish) return;
-    isGameFinish = true;
+    if (!isGameRunning) return;
+    isGameRunning = false;
     countdown.Stop();
     enemyTimer.Stop();
 

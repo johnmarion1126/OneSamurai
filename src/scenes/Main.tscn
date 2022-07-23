@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/scripts/Main.cs" type="Script" id=1]
 [ext_resource path="res://src/scenes/Samurai.tscn" type="PackedScene" id=2]
@@ -27,6 +27,38 @@ font_data = ExtResource( 4 )
 size = 6
 outline_color = Color( 0.2, 0.2, 0.2, 1 )
 font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "FadeMusic"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "FadeMusicIn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, 0.0 ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "FadeToNormal"
@@ -57,6 +89,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 0.2, 0.2, 0.2, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleMusic:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
 }
 
 [node name="Main" type="Node"]
@@ -128,6 +172,7 @@ flip_h = true
 [node name="TitleMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 volume_db = 1.0
+pitch_scale = 0.9
 autoplay = true
 
 [node name="TitleNode" type="Node2D" parent="."]
@@ -170,6 +215,8 @@ anchor_bottom = 1.0
 color = Color( 0.2, 0.2, 0.2, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FadeMusic = SubResource( 8 )
+anims/FadeMusicIn = SubResource( 9 )
 anims/FadeToNormal = SubResource( 6 )
 anims/RESET = SubResource( 7 )
 

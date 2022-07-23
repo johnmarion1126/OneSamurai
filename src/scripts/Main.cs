@@ -8,8 +8,10 @@ public class Main : Node
   private Label startMessage;
   private Label resultMessage;
   private Label resetMessage;
+
   private Node2D titleNode;
   private AnimationPlayer animPlayer;
+  private AudioStreamPlayer2D titleMusic;
 
   private Samurai samurai1;
   private Samurai samurai2;
@@ -24,8 +26,10 @@ public class Main : Node
     startMessage = GetNode<Label>("StartMessage");
     resultMessage = GetNode<Label>("ResultMessage");
     resetMessage = GetNode<Label>("ResetMessage");
+
     titleNode = GetNode<Node2D>("TitleNode");
     animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+    titleMusic = GetNode<AudioStreamPlayer2D>("TitleMusic");
 
     startMessage.Hide();
     resultMessage.Hide();
@@ -36,7 +40,9 @@ public class Main : Node
 
     countdown = GetNode<Timer>("Countdown");
     enemyTimer = GetNode<Timer>("EnemyTimer");
+
     animPlayer.Play("FadeToNormal");
+    animPlayer.Play("FadeMusicIn");
   }
 
   public override void _Process(float delta)
@@ -49,6 +55,7 @@ public class Main : Node
     if (!isGameRunning && Input.IsActionJustPressed("attack"))
     {
       titleNode.Hide();
+      titleMusic.Stop();
       setTimers();
     }
 

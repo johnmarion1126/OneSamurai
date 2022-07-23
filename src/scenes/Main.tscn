@@ -29,7 +29,7 @@ color = Color( 0.2, 0.2, 0.2, 1 )
 [node name="Sky" type="ColorRect" parent="Background"]
 margin_top = -96.0
 margin_right = 160.0
-color = Color( 0.7, 0.7, 0.7, 1 )
+color = Color( 0.701961, 0.701961, 0.701961, 1 )
 
 [node name="Countdown" type="Timer" parent="."]
 one_shot = true

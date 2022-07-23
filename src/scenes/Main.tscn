@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/scripts/Main.cs" type="Script" id=1]
 [ext_resource path="res://src/scenes/Samurai.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/music/intro.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/Early GameBoy.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/music/double_hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/music/single_hit.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=2]
 size = 10
@@ -168,6 +170,14 @@ position = Vector2( 32, 72 )
 [node name="Samurai2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 128, 72 )
 flip_h = true
+
+[node name="SingleHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+pitch_scale = 0.9
+
+[node name="DoubleHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+pitch_scale = 0.9
 
 [node name="TitleMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )

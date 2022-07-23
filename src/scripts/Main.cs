@@ -11,7 +11,10 @@ public class Main : Node
 
   private Node2D titleNode;
   private AnimationPlayer animPlayer;
+
   private AudioStreamPlayer2D titleMusic;
+  private AudioStreamPlayer2D singleHit;
+  private AudioStreamPlayer2D doubleHit;
 
   private Samurai samurai1;
   private Samurai samurai2;
@@ -29,7 +32,10 @@ public class Main : Node
 
     titleNode = GetNode<Node2D>("TitleNode");
     animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+
     titleMusic = GetNode<AudioStreamPlayer2D>("TitleMusic");
+    singleHit = GetNode<AudioStreamPlayer2D>("SingleHit");
+    doubleHit = GetNode<AudioStreamPlayer2D>("DoubleHit");
 
     startMessage.Hide();
     resultMessage.Hide();
@@ -56,6 +62,7 @@ public class Main : Node
     {
       titleNode.Hide();
       titleMusic.Stop();
+      singleHit.Play();
       setTimers();
     }
 
@@ -94,6 +101,7 @@ public class Main : Node
   {
     isStartTimerRunning = false;
     startMessage.Show();
+    doubleHit.Play();
   }
 
   public void setEnemyWin()

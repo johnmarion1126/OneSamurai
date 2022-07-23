@@ -61,7 +61,6 @@ public class Main : Node
 
     if (!isGameRunning && Input.IsActionJustPressed("reset"))
     {
-      singleHit.Play();
       reset();
     }
 

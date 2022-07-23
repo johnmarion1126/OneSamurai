@@ -125,7 +125,6 @@ one_shot = true
 [node name="EnemyTimer" type="Timer" parent="."]
 
 [node name="ResultMessage" type="Label" parent="."]
-visible = false
 margin_left = 9.0
 margin_top = 22.0
 margin_right = 156.0
@@ -138,15 +137,14 @@ align = 1
 valign = 1
 
 [node name="ResetMessage" type="Label" parent="."]
-visible = false
 margin_left = 8.0
-margin_top = 41.0
+margin_top = 33.0
 margin_right = 155.0
-margin_bottom = 62.0
+margin_bottom = 54.0
 rect_pivot_offset = Vector2( -57, 16 )
 custom_colors/font_color = Color( 0.4, 0.4, 0.4, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "Press R To RESET Or Q TO QUIT"
+text = "Press R To RESET"
 align = 1
 valign = 1
 autowrap = true
@@ -173,10 +171,12 @@ flip_h = true
 
 [node name="SingleHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+volume_db = -1.0
 pitch_scale = 0.9
 
 [node name="DoubleHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
+volume_db = -1.0
 pitch_scale = 0.9
 
 [node name="TitleMusic" type="AudioStreamPlayer2D" parent="."]
@@ -222,6 +222,10 @@ clip_text = true
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = -1.0
 color = Color( 0.2, 0.2, 0.2, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

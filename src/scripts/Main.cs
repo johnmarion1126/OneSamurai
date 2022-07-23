@@ -21,6 +21,7 @@ public class Main : Node
 
   private bool isStartTimerRunning = true;
   private bool isGameRunning = false;
+  private bool isInTitle = true;
 
   public override void _Ready()
   {
@@ -53,22 +54,25 @@ public class Main : Node
 
   public override void _Process(float delta)
   {
+    if (isGameRunning && Input.IsActionJustPressed("attack"))
+    {
+      playerAttack();
+    }
+
     if (!isGameRunning && Input.IsActionJustPressed("reset"))
     {
+      singleHit.Play();
       reset();
     }
 
-    if (!isGameRunning && Input.IsActionJustPressed("attack"))
+    if (isInTitle && Input.IsActionJustPressed("attack"))
     {
+      isInTitle = false;
+      isGameRunning = true;
       titleNode.Hide();
       titleMusic.Stop();
       singleHit.Play();
       setTimers();
-    }
-
-    if (isGameRunning && Input.IsActionJustPressed("attack"))
-    {
-      playerAttack();
     }
   }
 

@@ -179,7 +179,6 @@ one_shot = true
 [node name="EnemyTimer" type="Timer" parent="."]
 
 [node name="ResultMessage" type="Label" parent="."]
-visible = false
 margin_left = 106.0
 margin_top = 56.0
 margin_right = 349.0
@@ -192,7 +191,6 @@ align = 1
 valign = 1
 
 [node name="ResetMessage" type="Label" parent="."]
-visible = false
 margin_left = 65.0
 margin_top = 86.0
 margin_right = 390.0
@@ -219,12 +217,12 @@ align = 1
 valign = 1
 
 [node name="Samurai1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 73, 214 )
-scale = Vector2( 9, 9 )
+position = Vector2( 83, 222 )
+scale = Vector2( 8, 8 )
 
 [node name="Samurai2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 378, 214 )
-scale = Vector2( 9, 9 )
+position = Vector2( 368, 222 )
+scale = Vector2( 8, 8 )
 flip_h = true
 
 [node name="SingleHit" type="AudioStreamPlayer2D" parent="."]

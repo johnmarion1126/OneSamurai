@@ -1,5 +1,5 @@
 # OneSamurai
-A simple godot remake of *Samurai Kirby* from *Kirby Super Star*.
+A simple godot remake of *Samurai Kirby* from *Kirby Super Star*. Play it here: https://johncoding.itch.io/onesamurai.
 
 ## Screenshots
 <div align="center">

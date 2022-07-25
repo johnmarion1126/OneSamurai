@@ -41,7 +41,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=9]
 resource_name = "FadeMusicIn"
-length = 5.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("TitleMusic:volume_db")
 tracks/0/interp = 2
@@ -49,7 +49,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 5 ),
+"times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ -80.0, 0.0 ]
@@ -171,7 +171,7 @@ color = Color( 0.7, 0.7, 0.7, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 286.0
-color = Color( 0.2, 0.2, 0.2, 1 )
+color = Color( 0.3, 0.3, 0.3, 1 )
 
 [node name="Countdown" type="Timer" parent="."]
 one_shot = true

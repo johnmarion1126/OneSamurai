@@ -48,6 +48,9 @@ public class Main : Node
     countdown = GetNode<Timer>("Countdown");
     enemyTimer = GetNode<Timer>("EnemyTimer");
 
+    titleMusic.VolumeDb = -80;
+    titleMusic.Play();
+
     animPlayer.Play("FadeToNormal");
     animPlayer.Play("FadeMusicIn");
   }
@@ -70,7 +73,7 @@ public class Main : Node
       isGameRunning = true;
       titleNode.Hide();
       titleMusic.Stop();
-      singleHit.Play();
+      doubleHit.Play();
       setTimers();
     }
   }
@@ -104,7 +107,7 @@ public class Main : Node
   {
     isStartTimerRunning = false;
     startMessage.Show();
-    doubleHit.Play();
+    singleHit.Play();
   }
 
   public void setEnemyWin()

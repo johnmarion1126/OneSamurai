@@ -48,15 +48,15 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=9]
 resource_name = "FadeMusicIn"
-length = 2.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("TitleMusic:volume_db")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ -80.0, 0.0 ]
@@ -64,7 +64,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "FadeToNormal"
-length = 2.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -72,7 +72,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0.2, 0.2, 0.2, 1 ), Color( 0.2, 0.2, 0.2, 0 ) ]
@@ -81,7 +81,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("TitleMusic:volume_db")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -90,10 +90,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.2, 0.2, 0.2, 0 ) ]
+"values": [ 1.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("TitleMusic:volume_db")
+tracks/1/path = NodePath("ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -102,7 +102,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1.0 ]
+"values": [ Color( 0.2, 0.2, 0.2, 0 ) ]
 }
 
 [node name="Main" type="Node"]
@@ -125,6 +125,7 @@ one_shot = true
 [node name="EnemyTimer" type="Timer" parent="."]
 
 [node name="ResultMessage" type="Label" parent="."]
+visible = false
 margin_left = 9.0
 margin_top = 22.0
 margin_right = 156.0
@@ -137,6 +138,7 @@ align = 1
 valign = 1
 
 [node name="ResetMessage" type="Label" parent="."]
+visible = false
 margin_left = 8.0
 margin_top = 33.0
 margin_right = 155.0
@@ -171,19 +173,18 @@ flip_h = true
 
 [node name="SingleHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
-volume_db = -1.0
-pitch_scale = 0.9
+volume_db = -2.0
+pitch_scale = 0.8
 
 [node name="DoubleHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
-volume_db = -1.0
-pitch_scale = 0.9
+volume_db = -2.0
+pitch_scale = 0.8
 
 [node name="TitleMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 volume_db = 1.0
 pitch_scale = 0.9
-autoplay = true
 
 [node name="TitleNode" type="Node2D" parent="."]
 
@@ -219,20 +220,16 @@ align = 1
 valign = 1
 clip_text = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = -1.0
-margin_right = 1.0
-margin_bottom = -1.0
-color = Color( 0.2, 0.2, 0.2, 0 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeMusic = SubResource( 8 )
 anims/FadeMusicIn = SubResource( 9 )
 anims/FadeToNormal = SubResource( 6 )
 anims/RESET = SubResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.2, 0.2, 0.2, 0 )
 
 [connection signal="timeout" from="Countdown" to="." method="onCountdownTimeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="onEnemyTimerTimeout"]

@@ -10,6 +10,7 @@ public class KurosawaEdit : TextureRect
   public override void _Ready()
   {
     kurosawaPlayer = GetNode<AnimationPlayer>("KurosawaEdit");
+    this.MarginRight = 0;
   }
 
   public override void _Process(float delta)

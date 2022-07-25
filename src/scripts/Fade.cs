@@ -3,11 +3,11 @@ using System;
 
 public class Fade : ColorRect
 {
-    private AnimationPlayer fadePlayer;
+  private AnimationPlayer fadePlayer;
 
-    public override void _Ready()
-    {
-        fadePlayer = GetNode<AnimationPlayer>("FadePlayer");
-        fadePlayer.Play("FadeIn");        
-    }
+  public override void _Ready()
+  {
+      fadePlayer = GetNode<AnimationPlayer>("FadePlayer");
+      fadePlayer.Play("FadeIn");        
+  }
 }

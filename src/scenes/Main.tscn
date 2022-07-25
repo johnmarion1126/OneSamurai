@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/scripts/Main.cs" type="Script" id=1]
 [ext_resource path="res://src/scenes/Samurai.tscn" type="PackedScene" id=2]
@@ -7,28 +7,20 @@
 [ext_resource path="res://assets/music/double_hit.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/music/single_hit.wav" type="AudioStream" id=6]
 [ext_resource path="res://src/scripts/Fade.cs" type="Script" id=7]
+[ext_resource path="res://assets/sprites/TitleScreen.png" type="Texture" id=8]
+[ext_resource path="res://src/scripts/KurosawaEdit.cs" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=2]
-size = 10
+size = 23
 outline_color = Color( 0.8, 0.8, 0.8, 1 )
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 7
+size = 20
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=1]
-size = 26
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 13
-outline_color = Color( 0.2, 0.2, 0.2, 1 )
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 6
-outline_color = Color( 0.2, 0.2, 0.2, 1 )
+size = 68
 font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=8]
@@ -106,6 +98,36 @@ tracks/1/keys = {
 "values": [ Color( 0.2, 0.2, 0.2, 0 ) ]
 }
 
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_right")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -450.0 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Transition"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_right")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -450.0 ]
+}
+
 [sub_resource type="Animation" id=10]
 resource_name = "FadeIn"
 length = 5.0
@@ -140,16 +162,16 @@ tracks/0/keys = {
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 
-[node name="Background" type="ColorRect" parent="."]
-margin_top = 96.0
-margin_right = 160.0
-margin_bottom = 144.0
-color = Color( 0.2, 0.2, 0.2, 1 )
+[node name="Sky" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.7, 0.7, 0.7, 1 )
 
-[node name="Sky" type="ColorRect" parent="Background"]
-margin_top = -96.0
-margin_right = 160.0
-color = Color( 0.701961, 0.701961, 0.701961, 1 )
+[node name="Ground" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 286.0
+color = Color( 0.2, 0.2, 0.2, 1 )
 
 [node name="Countdown" type="Timer" parent="."]
 one_shot = true
@@ -158,10 +180,10 @@ one_shot = true
 
 [node name="ResultMessage" type="Label" parent="."]
 visible = false
-margin_left = 9.0
-margin_top = 22.0
-margin_right = 156.0
-margin_bottom = 40.0
+margin_left = 106.0
+margin_top = 56.0
+margin_right = 349.0
+margin_bottom = 85.0
 rect_pivot_offset = Vector2( -57, 16 )
 custom_colors/font_color = Color( 0.2, 0.2, 0.2, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -171,10 +193,10 @@ valign = 1
 
 [node name="ResetMessage" type="Label" parent="."]
 visible = false
-margin_left = 8.0
-margin_top = 33.0
-margin_right = 155.0
-margin_bottom = 54.0
+margin_left = 65.0
+margin_top = 86.0
+margin_right = 390.0
+margin_bottom = 111.0
 rect_pivot_offset = Vector2( -57, 16 )
 custom_colors/font_color = Color( 0.4, 0.4, 0.4, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -185,10 +207,10 @@ autowrap = true
 
 [node name="StartMessage" type="Label" parent="."]
 visible = false
-margin_left = 50.0
-margin_top = 16.0
-margin_right = 114.0
-margin_bottom = 64.0
+margin_left = 160.0
+margin_top = 64.0
+margin_right = 298.0
+margin_bottom = 149.0
 custom_colors/font_color = Color( 0.2, 0.2, 0.2, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
@@ -197,10 +219,12 @@ align = 1
 valign = 1
 
 [node name="Samurai1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 32, 72 )
+position = Vector2( 73, 214 )
+scale = Vector2( 9, 9 )
 
 [node name="Samurai2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 128, 72 )
+position = Vector2( 378, 214 )
+scale = Vector2( 9, 9 )
 flip_h = true
 
 [node name="SingleHit" type="AudioStreamPlayer2D" parent="."]
@@ -218,49 +242,31 @@ stream = ExtResource( 3 )
 volume_db = 1.0
 pitch_scale = 0.9
 
-[node name="TitleNode" type="Node2D" parent="."]
-
-[node name="Title" type="Label" parent="TitleNode"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 5.0
-margin_top = 20.0
-margin_right = 159.0
-margin_bottom = 40.0
-custom_colors/font_color = Color( 0.2, 0.2, 0.2, 1 )
-custom_fonts/font = SubResource( 5 )
-text = "One Samurai"
-align = 1
-valign = 1
-clip_text = true
-
-[node name="Start" type="Label" parent="TitleNode"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 1.0
-margin_top = 38.0
-margin_right = 160.0
-margin_bottom = 55.0
-custom_colors/font_color = Color( 0.4, 0.4, 0.4, 1 )
-custom_fonts/font = SubResource( 4 )
-text = "Press Space To Start"
-align = 1
-valign = 1
-clip_text = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeMusic = SubResource( 8 )
 anims/FadeMusicIn = SubResource( 9 )
 anims/FadeToNormal = SubResource( 6 )
 anims/RESET = SubResource( 7 )
 
+[node name="TitleScreen" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -450.0
+rect_clip_content = true
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 9 )
+
+[node name="KurosawaEdit" type="AnimationPlayer" parent="TitleScreen"]
+anims/RESET = SubResource( 12 )
+anims/Transition = SubResource( 13 )
+
 [node name="Fade" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -10.0
+margin_bottom = 2.0
 color = Color( 0.2, 0.2, 0.2, 0 )
 script = ExtResource( 7 )
 

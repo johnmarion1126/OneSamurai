@@ -9,9 +9,7 @@ public class Main : Node
   private Label resultMessage;
   private Label resetMessage;
 
-  private Node2D titleNode;
   private AnimationPlayer animPlayer;
-
   private AudioStreamPlayer2D titleMusic;
   private AudioStreamPlayer2D singleHit;
   private AudioStreamPlayer2D doubleHit;
@@ -31,9 +29,7 @@ public class Main : Node
     resultMessage = GetNode<Label>("ResultMessage");
     resetMessage = GetNode<Label>("ResetMessage");
 
-    titleNode = GetNode<Node2D>("TitleNode");
     animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-
     titleMusic = GetNode<AudioStreamPlayer2D>("TitleMusic");
     singleHit = GetNode<AudioStreamPlayer2D>("SingleHit");
     doubleHit = GetNode<AudioStreamPlayer2D>("DoubleHit");
@@ -70,7 +66,6 @@ public class Main : Node
     {
       isInTitle = false;
       isGameRunning = true;
-      titleNode.Hide();
       titleMusic.Stop();
       doubleHit.Play();
       setTimers();

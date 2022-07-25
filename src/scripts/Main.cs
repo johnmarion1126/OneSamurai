@@ -51,7 +51,6 @@ public class Main : Node
     titleMusic.VolumeDb = -80;
     titleMusic.Play();
 
-    animPlayer.Play("FadeToNormal");
     animPlayer.Play("FadeMusicIn");
   }
 
